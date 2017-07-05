@@ -24,7 +24,13 @@ class ViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: UITextFieldDelegate
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
+        // idTextField에서 Next(Return)키 누르면 passwordTextField로 이동
+        // passwordTextField에서 Next(Return)키 누르면 키보드 숨김
+        if textField == idTextField {
+            passwordTextField.becomeFirstResponder()
+        } else {
+            textField.resignFirstResponder()
+        }
         return true
     }
     
@@ -38,15 +44,16 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBAction func signInButton(_ sender: UIButton) {
         print("touch up inside - sign in")
         
-        if let id = idTextField.text, let pw = passwordTextField.text {
-            // 입력값 있는지 확인한 뒤 Member 생성
-            if id.isEmpty || pw.isEmpty {
+        // 입력값 있는지 확인한 뒤 Member 생성
+        if let id = idTextField.text,
+            let pw = passwordTextField.text,
+            !id.isEmpty,
+            !pw.isEmpty {
+            let tempMember = Member(id: id, password: pw)
+            tempMember.printInfo()
+        } else {
                 print("ID or Password is empty")
-            } else {
-                let tempMember = Member(id: id, password: pw)
-                tempMember.printInfo()
             }
-        }
     }
     @IBAction func signUpButton(_ sender: UIButton) {
         print("touch up inside - sign up")
