@@ -25,11 +25,12 @@ class ViewController: UIViewController {
     
     // MARK: Actions
     @IBAction func showNextQuestion(sender: AnyObject) {
-        currentQuestionIndex += 1
-        // 마지막 문제 끝나면 첫 번째로 돌아오기
-        if currentQuestionIndex == questions.count {
-            currentQuestionIndex = 0
-        }
+        // 마지막 문제를 만나면 첫 번째로 돌아오기
+//        currentQuestionIndex += 1
+//        if currentQuestionIndex == questions.count {
+//            currentQuestionIndex = 0
+//        }
+        currentQuestionIndex =  currentQuestionIndex + 1 == questions.count ? 0 : currentQuestionIndex + 1
         
         let question: String = questions[currentQuestionIndex]
         questionLabel.text = question

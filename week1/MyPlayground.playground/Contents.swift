@@ -67,23 +67,23 @@ for (space, name) in nameByParkingSpace {
 }
 
 enum PieType: Int {
-    case Apple = 0
-    case Cherry
-    case Pecan
+    case apple = 0
+    case cherry
+    case pecan
 }
-let favoritePie = PieType.Apple
+let favoritePie = PieType.apple
 
 let name: String
 switch favoritePie {
-case .Apple:
-    name = "Apple"
-case .Cherry:
-    name = "Cherry"
-case .Pecan:
-    name = "Pecan"
+case .apple:
+    name = "apple"
+case .cherry:
+    name = "cherry"
+case .pecan:
+    name = "pecan"
 }
 
-let pieRawValue = PieType.Pecan.rawValue
+let pieRawValue = PieType.pecan.rawValue
 // pieRawValue는 2를 값으로 가진 Int 타입이다.
 if let pieType = PieType(rawValue: pieRawValue) {
     // 'pieType'이 유효한 값을 가지면
