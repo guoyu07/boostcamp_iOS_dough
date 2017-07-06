@@ -55,6 +55,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
                 print("ID or Password is empty")
             }
     }
+    
     @IBAction func signUpButton(_ sender: UIButton) {
         print("touch up inside - sign up")
     }

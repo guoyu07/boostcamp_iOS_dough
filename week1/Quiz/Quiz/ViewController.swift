@@ -30,7 +30,7 @@ class ViewController: UIViewController {
 //        if currentQuestionIndex == questions.count {
 //            currentQuestionIndex = 0
 //        }
-        currentQuestionIndex =  currentQuestionIndex + 1 == questions.count ? 0 : currentQuestionIndex + 1
+        currentQuestionIndex = (currentQuestionIndex + 1) % questions.count
         
         let question: String = questions[currentQuestionIndex]
         questionLabel.text = question
