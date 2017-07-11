@@ -38,10 +38,6 @@ class ViewController: UIViewController, UITextFieldDelegate, UIImagePickerContro
     
     //
     @IBAction func selectImageFromPhotoLibrary(_ sender: UITapGestureRecognizer) {
-        idTextField.resignFirstResponder()
-        passwordTextField.resignFirstResponder()
-        checkPasswordTextField.resignFirstResponder()
-        
         let imagePickerController = UIImagePickerController()
         
         imagePickerController.sourceType = .photoLibrary
