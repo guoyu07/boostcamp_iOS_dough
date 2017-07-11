@@ -12,17 +12,17 @@ import MapKit
 class MapViewController: UIViewController {
     
     // MARK: Properties
-    var mapView: MKMapView!
+    var mapView: MKMapView?
     
     // MARK: Methods
     func mapTypeChanged(segControl: UISegmentedControl) {
         switch segControl.selectedSegmentIndex {
         case 0:
-            mapView.mapType = .standard
+            mapView?.mapType = .standard
         case 1:
-            mapView.mapType = .hybrid
+            mapView?.mapType = .hybrid
         case 2:
-            mapView.mapType = .satellite
+            mapView?.mapType = .satellite
         default:
             break
         }
