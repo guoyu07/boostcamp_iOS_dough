@@ -39,11 +39,12 @@ class ConversionViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: IBActions
     @IBAction func fahrenheitFieldEditingChanged(textField: UITextField) {
-        if let fahrenheitFromText = textField.text, let fahrenheitValue = Double(fahrenheitFromText) {
-            self.fahrenheitValue = fahrenheitValue
-        } else {
-            self.fahrenheitValue = nil
+        guard let fahrenheitFromText = textField.text,
+            let fahrenheitValue = Double(fahrenheitFromText) else {
+                self.fahrenheitValue = nil
+                return
         }
+        self.fahrenheitValue = fahrenheitValue
     }
     
     @IBAction func dismissKeyboard(sender: AnyObject) {
