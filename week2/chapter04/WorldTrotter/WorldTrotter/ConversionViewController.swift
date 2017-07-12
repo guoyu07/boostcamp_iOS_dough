@@ -53,13 +53,9 @@ class ConversionViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: UITextFieldDelegate
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        // 기존 문자열
-        let existingTextHasDecimalSeparator = textField.text?.range(of: ".") // "."까지의 문자열 or nil
-        // 변경 후 추가된 문자열
-        let replacementTextHasDecimalSeparator = string.range(of: ".")
-        
-        if existingTextHasDecimalSeparator != nil && replacementTextHasDecimalSeparator != nil {
-            return false // 입력 거부
+        // textField에 알파벳과 복수의 소수점 입력 방지
+        if string.rangeOfCharacter(from: CharacterSet.letters) != nil || (textField.text?.range(of: ".") != nil && string.range(of: ".") != nil) {
+            return false
         } else {
             return true
         }
