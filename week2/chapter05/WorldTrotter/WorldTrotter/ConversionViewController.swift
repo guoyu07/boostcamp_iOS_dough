@@ -70,7 +70,12 @@ class ConversionViewController: UIViewController, UITextFieldDelegate {
         
         print("ConversionViewController loaded its view.")
         fahrenheitTextField.delegate = self
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
+        updateBackgroundColorByCurrentHour()
     }
     
     func updateCelsiusLabel() {
@@ -78,6 +83,18 @@ class ConversionViewController: UIViewController, UITextFieldDelegate {
             celsiusLabel.text = numberFormatter.string(from: NSNumber(value: celsiusValue))
         } else {
             celsiusLabel.text = "???"
+        }
+    }
+    
+    func updateBackgroundColorByCurrentHour() {
+        let currentDate = Date()
+        let calendar = Calendar.current
+        let currentHour = calendar.component(.hour, from: currentDate)
+        
+        if (currentHour >= 18 && currentHour <= 23) || (currentHour >= 0 && currentHour <= 5) {
+            view.backgroundColor = UIColor.darkGray
+        } else {
+            view.backgroundColor = UIColor(red: 245/255, green: 244/255, blue: 241/255, alpha: 1.0)
         }
     }
 }
