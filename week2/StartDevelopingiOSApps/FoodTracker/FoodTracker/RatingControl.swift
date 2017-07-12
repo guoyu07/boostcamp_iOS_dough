@@ -19,6 +19,7 @@ import UIKit
             setupButtons()
         }
     }
+    
     @IBInspectable var starCount: Int = 5 {
         didSet {
             setupButtons()
@@ -62,13 +63,11 @@ import UIKit
     
     // MARK: Private Methods
     private func setupButtons() {
-        
         // Clear any exising buttons
         for button in ratingButtons {
             removeArrangedSubview(button) // Remove from the list of views managed by the stack view
             button.removeFromSuperview() // Remove from the stack view entirely
         }
-        
         ratingButtons.removeAll() // Clear the array
         
         // Load Button Images
@@ -79,7 +78,6 @@ import UIKit
         
         // Creat Buttons
         for index in 0..<starCount {
-            
             // Create the button
             let button = UIButton()
             button.setImage(emptyStar, for: .normal)
@@ -107,6 +105,7 @@ import UIKit
         
         updateButtonSelectionStates()
     }
+    
     private func updateButtonSelectionStates() {
         for (index, button) in ratingButtons.enumerated() {
             // If the index of a button is less than the rating, that button should be selected
