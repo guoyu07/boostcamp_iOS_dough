@@ -10,13 +10,10 @@ import UIKit
 
 class ConversionViewController: UIViewController, UITextFieldDelegate {
     
-    // MARK: IBOutlets
     @IBOutlet var fahrenheitTextField: UITextField!
     @IBOutlet var celsiusLabel: UILabel!
     
-    // MARK: Properties
     var fahrenheitValue: Double? {
-        // Property Observer: 프로퍼티 값이 변경될 때마다 아래 코드가 호출된다
         didSet {
             updateCelsiusLabel()
         }
@@ -37,9 +34,15 @@ class ConversionViewController: UIViewController, UITextFieldDelegate {
         return numberFormatter
     }()
     
-    // MARK: IBActions
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        fahrenheitTextField.delegate = self
+    }
+    
     @IBAction func fahrenheitFieldEditingChanged(textField: UITextField) {
-        guard let fahrenheitFromText = textField.text,
+        guard
+            let fahrenheitFromText = textField.text,
             let fahrenheitValue = Double(fahrenheitFromText) else {
                 self.fahrenheitValue = nil
                 return
@@ -53,17 +56,21 @@ class ConversionViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: UITextFieldDelegate
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        // textField에 알파벳과 복수의 소수점 입력 방지
-        if string.rangeOfCharacter(from: CharacterSet.letters) != nil || (textField.text?.range(of: ".") != nil && string.range(of: ".") != nil) {
+        // 알파벳 입력 방지
+        guard string.rangeOfCharacter(from: CharacterSet.letters) == nil else {
+            print("Alphabets cannot be entered.")
             return false
-        } else {
+        }
+        
+        // 복수의 소수점 입력 방지
+        guard textField.text?.range(of: ".") != nil else {
             return true
         }
-    }
-    
-    // MARK: Methods
-    override func viewDidLoad() {
-        fahrenheitTextField.delegate = self
+        guard string.range(of: ".") != nil else {
+            return true
+        }
+        print("Only one dot can be entered.")
+        return false
     }
     
     func updateCelsiusLabel() {
@@ -73,4 +80,5 @@ class ConversionViewController: UIViewController, UITextFieldDelegate {
             celsiusLabel.text = "???"
         }
     }
+    
 }
