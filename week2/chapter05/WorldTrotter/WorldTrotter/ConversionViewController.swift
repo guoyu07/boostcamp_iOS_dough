@@ -10,13 +10,10 @@ import UIKit
 
 class ConversionViewController: UIViewController, UITextFieldDelegate {
     
-    // MARK: IBOutlets
     @IBOutlet var fahrenheitTextField: UITextField!
     @IBOutlet var celsiusLabel: UILabel!
     
-    // MARK: Properties
     var fahrenheitValue: Double? {
-        // Property Observer: 프로퍼티 값이 변경될 때마다 아래 코드가 호출된다
         didSet {
             updateCelsiusLabel()
         }
@@ -37,13 +34,27 @@ class ConversionViewController: UIViewController, UITextFieldDelegate {
         return numberFormatter
     }()
     
-    // MARK: IBActions
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        print("ConversionViewController loaded its view.")
+        fahrenheitTextField.delegate = self
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        updateBackgroundColorByCurrentHour()
+    }
+    
     @IBAction func fahrenheitFieldEditingChanged(textField: UITextField) {
-        if let fahrenheitFromText = textField.text, let fahrenheitValue = Double(fahrenheitFromText) {
-            self.fahrenheitValue = fahrenheitValue
-        } else {
-            self.fahrenheitValue = nil
+        guard
+            let fahrenheitFromText = textField.text,
+            let fahrenheitValue = Double(fahrenheitFromText) else {
+                self.fahrenheitValue = nil
+                return
         }
+        self.fahrenheitValue = fahrenheitValue
     }
     
     @IBAction func dismissKeyboard(sender: AnyObject) {
@@ -52,25 +63,21 @@ class ConversionViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: UITextFieldDelegate
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        // 기존 문자열
-        let existingTextHasDecimalSeparator = textField.text?.range(of: ".") // "."까지의 문자열 or nil
-        // 변경 후 추가된 문자열
-        let replacementTextHasDecimalSeparator = string.range(of: ".")
+        // 알파벳 입력 방지
+        guard string.rangeOfCharacter(from: CharacterSet.letters) == nil else {
+            print("Alphabets cannot be entered.")
+            return false
+        }
         
-        if existingTextHasDecimalSeparator != nil && replacementTextHasDecimalSeparator != nil {
-            return false // 입력 거부
-        } else {
+        // 복수의 소수점 입력 방지
+        guard textField.text?.range(of: ".") != nil else {
             return true
         }
-    }
-    
-    // MARK: Methods
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        print("ConversionViewController loaded its view.")
-        fahrenheitTextField.delegate = self
-        
+        guard string.range(of: ".") != nil else {
+            return true
+        }
+        print("Only one dot can be entered.")
+        return false
     }
     
     func updateCelsiusLabel() {
@@ -80,4 +87,21 @@ class ConversionViewController: UIViewController, UITextFieldDelegate {
             celsiusLabel.text = "???"
         }
     }
+    
+    func updateBackgroundColorByCurrentHour() {
+        var colorArray = [UIColor]()
+        colorArray.append(UIColor.darkGray)
+        colorArray.append(UIColor(red: 245/255, green: 244/255, blue: 241/255, alpha: 1.0))
+        
+        let currentDate = Date()
+        let calendar = Calendar.current
+        let currentHour = calendar.component(.hour, from: currentDate)
+        
+        if (currentHour >= 18 && currentHour <= 23) || (currentHour >= 0 && currentHour <= 5) {
+            view.backgroundColor = colorArray[0]
+        } else {
+            view.backgroundColor = colorArray[1]
+        }
+    }
+    
 }
