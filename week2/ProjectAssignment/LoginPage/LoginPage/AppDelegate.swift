@@ -1,8 +1,8 @@
 //
 //  AppDelegate.swift
-//  SignupView
+//  LoginPage
 //
-//  Created by Kangsoo on 11/07/2017.
+//  Created by Kangsoo on 03/07/2017.
 //  Copyright © 2017 Dough. All rights reserved.
 //
 
