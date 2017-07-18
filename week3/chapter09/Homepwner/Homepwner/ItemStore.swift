@@ -17,11 +17,8 @@ class ItemStore {
         }
     }
     
-    func createItem() -> Item {
+    func createItem() {
         let newItem = Item(random: true)
-        
         allItems.append(newItem)
-        
-        return newItem
     }
 }

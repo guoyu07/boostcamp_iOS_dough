@@ -10,7 +10,7 @@ import UIKit
 
 class ItemsViewController: UITableViewController {
     var itemStore : ItemStore!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -19,7 +19,7 @@ class ItemsViewController: UITableViewController {
         
         let insets = UIEdgeInsets(top: statusBarHeight, left: 0, bottom: 0, right: 0)
         tableView.contentInset = insets
-        tableView.scrollIndicatorInsets = insets // MARK: 질문: 위로 스크롤하면 상태바랑 겹치는데?
+        tableView.scrollIndicatorInsets = insets // Scroll indicator는 스크롤 뷰 우측의 수직 스크롤바
     }
     
     // 표시할 행의 수
@@ -28,14 +28,28 @@ class ItemsViewController: UITableViewController {
     }
     
     // 각 행에 표시할 내용
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView,
+                            cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "UITableViewCell", for: indexPath)
-        
         let item = itemStore.allItems[indexPath.row]
-        
+
         cell.textLabel?.text = item.name
-        cell.detailTextLabel?.text = "$\(item.valueInDollars)" // MARK: 질문: $의 역할은?
+        cell.detailTextLabel?.text = "$\(item.valueInDollars)"
         
         return cell
+    }
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
+    
+    override func tableView(_ tableView: UITableView,
+                            titleForHeaderInSection section: Int) -> String? {
+        let headerTitles = ["Over $50", "Others"]
+        
+        if section < headerTitles.count {
+            return headerTitles[section]
+        }
+        return nil
     }
 }
