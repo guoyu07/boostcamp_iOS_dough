@@ -26,6 +26,7 @@ class ViewController: UIViewController {
                 print("Error is occured at switchButtonTouched.")
                 print("Is able to touch my button? \(isAble)")
                 print("Current control state: \(currentControlState)")
+                return
             }
             
             mybutton.imageView.alpha = 0.5
@@ -42,6 +43,7 @@ class ViewController: UIViewController {
                 print("Error is occured at switchButtonTouched.")
                 print("Is able to touch my button? \(isAble)")
                 print("Current control state: \(currentControlState)")
+                return
             }
             
             mybutton.imageView.alpha = 1.0

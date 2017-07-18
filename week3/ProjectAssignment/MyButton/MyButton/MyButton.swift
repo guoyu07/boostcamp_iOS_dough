@@ -16,10 +16,6 @@ class MyButton: UIView {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         switch controlState {
-        case [.normal, .disabled]:
-            return
-        case [.selected, .disabled]:
-            return
         case UIControlState.normal:
             imageView.alpha = 0.5
             statusLabel.text = "highlighted1"
@@ -30,18 +26,19 @@ class MyButton: UIView {
             statusLabel.text = "highlighted2"
             statusLabel.textColor = UIColor.red
             controlState = [.selected, .highlighted]
+        case [.normal, .disabled]:
+            return
+        case [.selected, .disabled]:
+            return
         default:
             print("Error is occured at touchesBegan.")
             print("Current control state: \(controlState)")
+            return
         }
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         switch controlState {
-        case [.normal, .disabled]:
-            return
-        case [.selected, .disabled]:
-            return
         case [.normal, .highlighted]:
             imageView.alpha = 1.0
             statusLabel.text = "selected"
@@ -52,9 +49,14 @@ class MyButton: UIView {
             statusLabel.text = "normal"
             statusLabel.textColor = UIColor.yellow
             controlState = .normal
+        case [.normal, .disabled]:
+            return
+        case [.selected, .disabled]:
+            return
         default:
             print("Error is occured at touchesEnded.")
             print("Current control state: \(controlState)")
+            return
         }
         
         print("touch up inside")
