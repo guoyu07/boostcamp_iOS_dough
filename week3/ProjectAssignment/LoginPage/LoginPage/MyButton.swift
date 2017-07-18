@@ -26,10 +26,6 @@ class MyButton: UIView {
             statusLabel.text = "highlighted2"
             statusLabel.textColor = UIColor.red
             controlState = [.selected, .highlighted]
-        case [.normal, .disabled]:
-            return
-        case [.selected, .disabled]:
-            return
         default:
             print("Error is occured at touchesBegan.")
             print("Current control state: \(controlState)")
@@ -49,10 +45,6 @@ class MyButton: UIView {
             statusLabel.text = "normal"
             statusLabel.textColor = UIColor.yellow
             controlState = .normal
-        case [.normal, .disabled]:
-            return
-        case [.selected, .disabled]:
-            return
         default:
             print("Error is occured at touchesEnded.")
             print("Current control state: \(controlState)")

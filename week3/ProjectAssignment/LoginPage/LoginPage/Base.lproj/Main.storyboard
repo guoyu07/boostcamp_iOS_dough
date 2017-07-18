@@ -125,7 +125,7 @@
                     </view>
                     <connections>
                         <outlet property="idTextField" destination="IsO-5R-9y0" id="ye8-Ol-edJ"/>
-                        <outlet property="mybutton" destination="iX4-7Q-baQ" id="4lB-uo-CMN"/>
+                        <outlet property="myButton" destination="iX4-7Q-baQ" id="Gw5-wD-Yys"/>
                         <outlet property="passwordTextField" destination="MSE-Zj-jff" id="i06-B2-PIA"/>
                     </connections>
                 </viewController>

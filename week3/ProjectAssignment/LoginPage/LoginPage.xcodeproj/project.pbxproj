@@ -60,11 +60,11 @@
 		83EED1C21F09DF1A00CE8746 /* LoginPage */ = {
 			isa = PBXGroup;
 			children = (
+				83EED1D51F09E98000CE8746 /* Member.swift */,
 				83C1230A1F1DCEF800898FC7 /* MyButton.swift */,
 				83EED1C31F09DF1A00CE8746 /* AppDelegate.swift */,
 				83EED1C51F09DF1A00CE8746 /* LoginViewController.swift */,
 				8365B8BD1F1A75970035D8F5 /* SignUpViewController.swift */,
-				83EED1D51F09E98000CE8746 /* Member.swift */,
 				83EED1C71F09DF1A00CE8746 /* Main.storyboard */,
 				83EED1CA1F09DF1A00CE8746 /* Assets.xcassets */,
 				83EED1CC1F09DF1A00CE8746 /* LaunchScreen.storyboard */,
