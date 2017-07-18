@@ -9,46 +9,44 @@
 import UIKit
 
 class ViewController: UIViewController {
-    @IBOutlet weak var mybutton: MyButton!
+    @IBOutlet weak var myButton: MyButton!
     
     var isAble: Bool = true
     
     @IBAction func switchButtonTouched(_ sender: UIButton) {
-        let currentControlState = mybutton.controlState
+        let currentControlState = myButton.controlState
 
         if isAble {
             switch currentControlState {
             case UIControlState.normal:
-                mybutton.controlState = [.normal, .disabled]
+                myButton.isUserInteractionEnabled = false
             case UIControlState.selected:
-                mybutton.controlState = [.selected, .disabled]
+                myButton.isUserInteractionEnabled = false
             default:
                 print("Error is occured at switchButtonTouched.")
-                print("Is able to touch my button? \(isAble)")
+                print("Current isAble: \(isAble)")
                 print("Current control state: \(currentControlState)")
                 return
             }
             
-            mybutton.imageView.alpha = 0.5
+            myButton.imageView.alpha = 0.5
             sender.setTitle("Enable the button", for: .normal)
-            
             isAble = false
         } else {
             switch currentControlState {
-            case [.normal, .disabled]:
-                mybutton.controlState = .normal
-            case [.selected, .disabled]:
-                mybutton.controlState = .selected
+            case UIControlState.normal:
+                myButton.isUserInteractionEnabled = true
+            case UIControlState.selected:
+                myButton.isUserInteractionEnabled = true
             default:
                 print("Error is occured at switchButtonTouched.")
-                print("Is able to touch my button? \(isAble)")
+                print("Current isAble: \(isAble)")
                 print("Current control state: \(currentControlState)")
                 return
             }
             
-            mybutton.imageView.alpha = 1.0
+            myButton.imageView.alpha = 1.0
             sender.setTitle("Disable the button", for: .normal)
-
             isAble = true
         }
     }

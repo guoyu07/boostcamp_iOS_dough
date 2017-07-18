@@ -68,7 +68,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="mybutton" destination="dL3-Mt-R5k" id="hsD-l0-92b"/>
+                        <outlet property="myButton" destination="dL3-Mt-R5k" id="pvr-G6-5L9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
