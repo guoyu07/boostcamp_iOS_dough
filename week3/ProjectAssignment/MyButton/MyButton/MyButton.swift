@@ -16,12 +16,12 @@ class MyButton: UIView {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         switch controlState {
-        case UIControlState.normal:
+        case [.normal]:
             imageView.alpha = 0.5
             statusLabel.text = "highlighted1"
             statusLabel.textColor = UIColor.white
             controlState = [.normal, .highlighted]
-        case UIControlState.selected:
+        case [.selected]:
             imageView.alpha = 0.5
             statusLabel.text = "highlighted2"
             statusLabel.textColor = UIColor.red

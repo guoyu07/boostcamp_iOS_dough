@@ -11,43 +11,19 @@ import UIKit
 class ViewController: UIViewController {
     @IBOutlet weak var myButton: MyButton!
     
-    var isAble: Bool = true
+    var isMyButtonWorking: Bool = true
     
     @IBAction func switchButtonTouched(_ sender: UIButton) {
-        let currentControlState = myButton.controlState
-
-        if isAble {
-            switch currentControlState {
-            case UIControlState.normal:
-                myButton.isUserInteractionEnabled = false
-            case UIControlState.selected:
-                myButton.isUserInteractionEnabled = false
-            default:
-                print("Error is occured at switchButtonTouched.")
-                print("Current isAble: \(isAble)")
-                print("Current control state: \(currentControlState)")
-                return
-            }
-            
+        if isMyButtonWorking {
+			myButton.isUserInteractionEnabled = false
             myButton.imageView.alpha = 0.5
             sender.setTitle("Enable the button", for: .normal)
-            isAble = false
+            isMyButtonWorking = false
         } else {
-            switch currentControlState {
-            case UIControlState.normal:
-                myButton.isUserInteractionEnabled = true
-            case UIControlState.selected:
-                myButton.isUserInteractionEnabled = true
-            default:
-                print("Error is occured at switchButtonTouched.")
-                print("Current isAble: \(isAble)")
-                print("Current control state: \(currentControlState)")
-                return
-            }
-            
+			myButton.isUserInteractionEnabled = true
             myButton.imageView.alpha = 1.0
             sender.setTitle("Disable the button", for: .normal)
-            isAble = true
+            isMyButtonWorking = true
         }
     }
 }
