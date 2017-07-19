@@ -13,9 +13,8 @@ class ItemStore {
     
     func createItem() -> Item {
         let newItem = Item(random: true)
-        
         allItems.append(newItem)
-        
+		
         return newItem
     }
     
@@ -26,7 +25,7 @@ class ItemStore {
     }
     
     func moveItemAtIndex(fromIndex: Int, toIndex: Int) {
-        if fromIndex == toIndex {
+        guard fromIndex != toIndex else {
             return
         }
         
