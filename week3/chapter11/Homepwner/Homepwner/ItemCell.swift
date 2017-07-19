@@ -14,11 +14,19 @@ class ItemCell: UITableViewCell {
     @IBOutlet var valueLabel: UILabel!
     
     func updateLabels() {
-        let bodyFont = UIFont.preferredFont(forTextStyle: UIFontTextStyle.body)
+        let bodyFont = UIFont.preferredFont(forTextStyle: .body)
         nameLabel.font = bodyFont
         valueLabel.font = bodyFont
         
-        let captionFont = UIFont.preferredFont(forTextStyle: UIFontTextStyle.caption1)
+        let captionFont = UIFont.preferredFont(forTextStyle: .caption1)
         serialNumberLabel.font = captionFont
     }
+	
+	func setBackgroundColor(by value: Int) {
+		if value < 50 {
+			self.backgroundColor = UIColor.green
+		} else {
+			self.backgroundColor = UIColor.red
+		}
+	}
 }

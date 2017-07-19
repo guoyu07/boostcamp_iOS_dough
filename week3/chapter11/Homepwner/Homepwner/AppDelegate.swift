@@ -14,14 +14,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
-        
-        let itemStore = ItemStore()
-        
-        let itemsController = window!.rootViewController as! ItemsViewController
-        itemsController.itemStore = itemStore
-        
-        return true
+		let itemStore = ItemStore()
+		
+		if let itemsController = window?.rootViewController as? ItemsViewController {
+			itemsController.itemStore = itemStore
+		}
+		
+		return true
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
