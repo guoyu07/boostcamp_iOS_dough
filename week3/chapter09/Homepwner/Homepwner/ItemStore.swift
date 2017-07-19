@@ -9,16 +9,16 @@
 import UIKit
 
 class ItemStore {
-    var allItems = [Item]()
-    
-    init() {
-        for _ in 0..<5 {
-            createItem()
-        }
-    }
-    
-    func createItem() {
-        let newItem = Item(random: true)
-        allItems.append(newItem)
-    }
+	var allItems = [Item]()
+	
+	init() {
+		for _ in 0..<5 {
+			createItem()
+		}
+	}
+	
+	func createItem() {
+		let newItem = Item(random: true)
+		allItems.append(newItem)
+	}
 }

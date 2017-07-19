@@ -9,21 +9,21 @@
 import UIKit
 
 class Item: NSObject {
-    var name :String
-    var valueInDollars: Int
-    var serialNumber: String?
-    let dateCreated: Date
-
-    init(name: String, serialNumber: String?, valueInDollars: Int) {
-        self.name = name
-        self.valueInDollars = valueInDollars
-        self.serialNumber = serialNumber
-        self.dateCreated = Date()
-        
-        super.init()
-    }
-    
-    convenience init(random: Bool = false) {
+	var name :String
+	var valueInDollars: Int
+	var serialNumber: String?
+	let dateCreated: Date
+	
+	init(name: String, serialNumber: String?, valueInDollars: Int) {
+		self.name = name
+		self.valueInDollars = valueInDollars
+		self.serialNumber = serialNumber
+		self.dateCreated = Date()
+		
+		super.init()
+	}
+	
+	convenience init(random: Bool = false) {
 		guard random else {
 			self.init(name: "", serialNumber: nil, valueInDollars: 0)
 			return
@@ -40,7 +40,7 @@ class Item: NSObject {
 		
 		let randomName = "\(randomAdjective) \(randomNoun)"
 		let randomValue = Int(arc4random_uniform(100))
-		let randomSerialNumber = UUID().uuidString.components(separatedBy: "-").first!
+		let randomSerialNumber = UUID().uuidString.components(separatedBy: "-").first
 		
 		self.init(name: randomName, serialNumber: randomSerialNumber, valueInDollars: randomValue)
 	}
