@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="MyButton" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dL3-Mt-R5k" customClass="MyButton" customModule="MyButton" customModuleProvider="target">
+                                <rect key="frame" x="67" y="301.5" width="240" height="64"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="00O-oJ-r4m">
+                                        <rect key="frame" x="0.0" y="0.0" width="240" height="64"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        <gestureRecognizers/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="normal" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xQP-Vm-GY5">
+                                        <rect key="frame" x="0.0" y="22" width="240" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.96078431372549022" green="0.95686274509803915" blue="0.94509803921568625" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="xQP-Vm-GY5" firstAttribute="centerY" secondItem="dL3-Mt-R5k" secondAttribute="centerY" id="9s3-Dr-h7P"/>
+                                    <constraint firstItem="xQP-Vm-GY5" firstAttribute="centerX" secondItem="dL3-Mt-R5k" secondAttribute="centerX" id="HwW-By-9Jc"/>
+                                    <constraint firstItem="xQP-Vm-GY5" firstAttribute="leading" secondItem="dL3-Mt-R5k" secondAttribute="leading" id="RFQ-wg-McK"/>
+                                    <constraint firstAttribute="height" constant="64" id="eDm-7L-AeU"/>
+                                    <constraint firstAttribute="width" constant="240" id="kfO-oA-l0K"/>
+                                    <constraint firstAttribute="trailing" secondItem="xQP-Vm-GY5" secondAttribute="trailing" id="qcN-Ca-YK9"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="imageView" destination="00O-oJ-r4m" id="IEJ-cP-Ps5"/>
+                                    <outlet property="statusLabel" destination="xQP-Vm-GY5" id="pJC-p3-qai"/>
+                                </connections>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mPm-Dq-HDP">
+                                <rect key="frame" x="124" y="373.5" width="126" height="30"/>
+                                <state key="normal" title="Disable the button"/>
+                                <connections>
+                                    <action selector="switchButtonTouched:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Rtl-nP-xCe"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="dL3-Mt-R5k" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="AFV-0q-KRz"/>
+                            <constraint firstItem="mPm-Dq-HDP" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="LOs-VU-RAl"/>
+                            <constraint firstItem="dL3-Mt-R5k" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="rJD-ls-zf3"/>
+                            <constraint firstItem="mPm-Dq-HDP" firstAttribute="top" secondItem="dL3-Mt-R5k" secondAttribute="bottom" constant="8" id="yWQ-9W-229"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="myButton" destination="dL3-Mt-R5k" id="pvr-G6-5L9"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="140" y="137.18140929535232"/>
+        </scene>
+    </scenes>
+</document>
