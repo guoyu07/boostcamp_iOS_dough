@@ -9,10 +9,11 @@
 import Foundation
 
 class Member {
-    var id: String = ""
-    var password: String = ""
-    
-    func printIDPassword() {
-        print("ID : \(id), PW : \(password)")
-    }
+    var id: String
+    var password: String
+	
+	init(id: String, password: String) {
+		self.id = id
+		self.password = password
+	}
 }

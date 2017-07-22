@@ -13,8 +13,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var myButton: MyButton!
     
-    var isAble: Bool = true
-    
+	var isMyButtonWorking: Bool = true
+	
     @IBAction func signInButton(_ sender: UIButton) {
         print("touch up inside - sign in")
         
@@ -27,57 +27,31 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             return
         }
         
-        let tempMember = Member()
-        tempMember.id = id
-        tempMember.password = password
-        tempMember.printIDPassword()
+        let tempMember = Member(id: id, password: password)
+		print("ID : \(tempMember.id), PW : \(tempMember.password)")
     }
     
     @IBAction func signUpButton(_ sender: UIButton) {
         print("touch up inside - sign up")
     }
     
-    @IBAction func switchButtonTouched(_ sender: UIButton) {
-        let currentControlState = myButton.controlState
-        
-        if isAble {
-            switch currentControlState {
-            case UIControlState.normal:
-                myButton.isUserInteractionEnabled = false
-            case UIControlState.selected:
-                myButton.isUserInteractionEnabled = false
-            default:
-                print("Error is occured at switchButtonTouched.")
-                print("Current isAble: \(isAble)")
-                print("Current control state: \(currentControlState)")
-                return
-            }
-            
-            myButton.imageView.alpha = 0.5
-            sender.setTitle("Enable the button", for: .normal)
-            isAble = false
-        } else {
-            switch currentControlState {
-            case UIControlState.normal:
-                myButton.isUserInteractionEnabled = true
-            case UIControlState.selected:
-                myButton.isUserInteractionEnabled = true
-            default:
-                print("Error is occured at switchButtonTouched.")
-                print("Current isAble: \(isAble)")
-                print("Current control state: \(currentControlState)")
-                return
-            }
-            
-            myButton.imageView.alpha = 1.0
-            sender.setTitle("Disable the button", for: .normal)
-            isAble = true
-        }
-    }
-    
+	@IBAction func switchButtonTouched(_ sender: UIButton) {
+		if isMyButtonWorking {
+			myButton.isUserInteractionEnabled = false
+			myButton.imageView.alpha = 0.5
+			sender.setTitle("Enable the button", for: .normal)
+			isMyButtonWorking = false
+		} else {
+			myButton.isUserInteractionEnabled = true
+			myButton.imageView.alpha = 1.0
+			sender.setTitle("Disable the button", for: .normal)
+			isMyButtonWorking = true
+		}
+	}
+	
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+		
         idTextField.delegate = self
         passwordTextField.delegate = self
     }
@@ -94,7 +68,6 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: UIResponder
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        // Hide keyboard when view is touched
         self.view.endEditing(true)
     }
 }

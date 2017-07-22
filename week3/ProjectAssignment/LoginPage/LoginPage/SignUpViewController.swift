@@ -17,14 +17,6 @@ UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     @IBOutlet weak var checkPasswordTextField: UITextField!
     @IBOutlet weak var selfIntroduceTextView: UITextView!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        idTextField.delegate = self
-        passwordTextField.delegate = self
-        checkPasswordTextField.delegate = self
-    }
-    
     @IBAction func selectImageFromPhotoLibrary(_ sender: UITapGestureRecognizer) {
         let imagePickerController = UIImagePickerController()
         
@@ -57,7 +49,15 @@ UIImagePickerControllerDelegate, UINavigationControllerDelegate {
             dismiss(animated: true, completion: nil)
         }
     }
-    
+	
+	override func viewDidLoad() {
+		super.viewDidLoad()
+		
+		idTextField.delegate = self
+		passwordTextField.delegate = self
+		checkPasswordTextField.delegate = self
+	}
+	
     // MARK: UITextFieldDelegate
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
