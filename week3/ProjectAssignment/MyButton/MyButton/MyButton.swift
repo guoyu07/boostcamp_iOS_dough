@@ -27,8 +27,7 @@ class MyButton: UIView {
             statusLabel.textColor = UIColor.red
             controlState = [.selected, .highlighted]
         default:
-            print("Error is occured at touchesBegan.")
-            print("Current control state: \(controlState)")
+            assertionFailure("Error at touchesBegan(), current control state: \(controlState)")
             return
         }
     }
@@ -46,8 +45,7 @@ class MyButton: UIView {
             statusLabel.textColor = UIColor.yellow
             controlState = .normal
         default:
-            print("Error is occured at touchesEnded.")
-            print("Current control state: \(controlState)")
+			assertionFailure("Error at touchesEnded(), current control state: \(controlState)")
             return
         }
         
