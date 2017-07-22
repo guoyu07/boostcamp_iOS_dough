@@ -23,10 +23,14 @@ class ItemCell: UITableViewCell {
     }
 	
 	func setBackgroundColor(by value: Int) {
+		var colorArray = [UIColor]()
+		colorArray.append(UIColor(red: 182 / 255, green: 215 / 255, blue: 168 / 255, alpha: 1.0))
+		colorArray.append(UIColor(red: 234 / 255, green: 153 / 255, blue: 153 / 255, alpha: 1.0))
+		
 		if value < 50 {
-			self.backgroundColor = UIColor.green
+			self.backgroundColor = colorArray[0]
 		} else {
-			self.backgroundColor = UIColor.red
+			self.backgroundColor = colorArray[1]
 		}
 	}
 }
