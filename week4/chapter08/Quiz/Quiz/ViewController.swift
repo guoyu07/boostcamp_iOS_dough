@@ -11,13 +11,13 @@ import UIKit
 class ViewController: UIViewController {
 	@IBOutlet var currentQuestionLabel: UILabel!
 	@IBOutlet var nextQuestionLabel: UILabel!
-    @IBOutlet var answerLabel: UILabel!
+	@IBOutlet var answerLabel: UILabel!
 	
 	@IBOutlet var currentQuestionLabelCenterXConstraint: NSLayoutConstraint!
 	@IBOutlet var nextQuestionLabelCenterXConstraint: NSLayoutConstraint!
 	
 	let questions: [String] = ["From what is cognac made?",
-                               "What is 7+7?",
+	                           "What is 7+7?",
                                "What is the capital of Vermont?"]
     let answers: [String] = ["Grapes",
                              "14",
