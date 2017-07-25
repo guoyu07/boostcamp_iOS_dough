@@ -10,11 +10,11 @@ import UIKit
 
 class Item: NSObject {
     var name :String
-	var valueInDollars: Int
+	var valueInDollars: Double
     var serialNumber: String?
     let dateCreated: Date
 
-    init(name: String, serialNumber: String?, valueInDollars: Int) {
+    init(name: String, serialNumber: String?, valueInDollars: Double) {
         self.name = name
         self.valueInDollars = valueInDollars
         self.serialNumber = serialNumber
@@ -39,7 +39,7 @@ class Item: NSObject {
 		let randomNoun = nouns[Int(idx)]
 		
 		let randomName = "\(randomAdjective) \(randomNoun)"
-		let randomValue = Int(arc4random_uniform(100))
+		let randomValue = Double(arc4random_uniform(100))
 		let randomSerialNumber = UUID().uuidString.components(separatedBy: "-").first
 		
 		self.init(name: randomName, serialNumber: randomSerialNumber, valueInDollars: randomValue)

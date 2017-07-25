@@ -9,14 +9,7 @@
 import UIKit
 
 class ItemsViewController: UITableViewController {
-	var itemStore : ItemStore! {
-		didSet {
-			guard itemStore != nil else {
-				assertionFailure("Item store is nil.")
-				return
-			}
-		}
-	}
+	var itemStore = ItemStore()
 		
     @IBAction func addNewItem(sender: AnyObject) {
         let newItem = itemStore.createItem()
@@ -125,12 +118,12 @@ class ItemsViewController: UITableViewController {
 		tableView.estimatedRowHeight = 65
 	}
 	
-	private func formatDollars(from value: Int) -> String {
+	private func formatDollars(from value: Double) -> String {
 		let currencyFormatter = NumberFormatter()
 		currencyFormatter.numberStyle = .currency
 		currencyFormatter.locale = Locale(identifier: "en_US")
 		
-		guard let formattedValue = currencyFormatter.string(from: value as NSNumber) else {
+		guard let formattedValue = currencyFormatter.string(from: NSNumber(value: value)) else {
 			assertionFailure("Failed to format currency")
 			return "N/A"
 		}

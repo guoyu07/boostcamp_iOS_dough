@@ -14,12 +14,8 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
 	@IBOutlet var valueField: UITextField!
 	@IBOutlet var dateLabel: UILabel!
 	
-	var item: Item! {
+	var item = Item() {
 		didSet {
-			guard item != nil else {
-				assertionFailure("The item is nil.")
-				return
-			}
 			navigationItem.title = item.name
 		}
 	}
@@ -65,7 +61,7 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
 				item.valueInDollars = 0
 				return
 		}
-		item.valueInDollars = value.intValue
+		item.valueInDollars = value.doubleValue
 	}
 	
 	func textFieldShouldReturn(_ textField: UITextField) -> Bool {

@@ -22,7 +22,7 @@ class ItemCell: UITableViewCell {
         serialNumberLabel.font = captionFont
     }
 	
-	func setBackgroundColor(by value: Int) {
+	func setBackgroundColor(by value: Double) {
 		var colorArray = [UIColor]()
 		colorArray.append(UIColor(red: 182 / 255, green: 215 / 255, blue: 168 / 255, alpha: 1.0))
 		colorArray.append(UIColor(red: 234 / 255, green: 153 / 255, blue: 153 / 255, alpha: 1.0))
