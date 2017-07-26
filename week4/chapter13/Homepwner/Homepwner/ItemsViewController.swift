@@ -14,7 +14,7 @@ class ItemsViewController: UITableViewController {
     @IBAction func addNewItem(sender: AnyObject) {
         let newItem = itemStore.createItem()
         
-        guard let index = itemStore.allItems.index(of: newItem) else {
+        guard let index = itemStore.allItems.index(where: { $0 === newItem }) else {
             assertionFailure("An index of new item must not be nil.")
             return
         }

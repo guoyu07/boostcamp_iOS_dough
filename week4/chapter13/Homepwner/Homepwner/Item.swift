@@ -8,7 +8,7 @@
 
 import UIKit
 
-class Item: NSObject {
+class Item {
     var name :String
     var valueInDollars: Double
     var serialNumber: String?
@@ -19,8 +19,6 @@ class Item: NSObject {
         self.valueInDollars = valueInDollars
         self.serialNumber = serialNumber
         self.dateCreated = Date()
-        
-        super.init()
     }
     
     convenience init(random: Bool = false) {

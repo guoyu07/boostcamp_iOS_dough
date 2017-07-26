@@ -19,7 +19,7 @@ class ItemStore {
     }
     
     func removeItem(item: Item) {
-        if let index = allItems.index(of: item) {
+        if let index = allItems.index(where: { $0 === item }) {
             allItems.remove(at: index)
         }
     }
