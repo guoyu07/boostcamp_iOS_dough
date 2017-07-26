@@ -21,16 +21,16 @@ class ItemCell: UITableViewCell {
         let captionFont = UIFont.preferredFont(forTextStyle: .caption1)
         serialNumberLabel.font = captionFont
     }
-	
-	func setBackgroundColor(by value: Double) {
-		var colorArray = [UIColor]()
-		colorArray.append(UIColor(red: 182 / 255, green: 215 / 255, blue: 168 / 255, alpha: 1.0))
-		colorArray.append(UIColor(red: 234 / 255, green: 153 / 255, blue: 153 / 255, alpha: 1.0))
-		
-		if value < 50 {
-			self.backgroundColor = colorArray[0]
-		} else {
-			self.backgroundColor = colorArray[1]
-		}
-	}
+    
+    func setBackgroundColor(by value: Double) {
+        var colorArray = [UIColor]()
+        colorArray.append(UIColor(red: 182 / 255, green: 215 / 255, blue: 168 / 255, alpha: 1.0))
+        colorArray.append(UIColor(red: 234 / 255, green: 153 / 255, blue: 153 / 255, alpha: 1.0))
+        
+        if value < 50 {
+            self.backgroundColor = colorArray[0]
+        } else {
+            self.backgroundColor = colorArray[1]
+        }
+    }
 }

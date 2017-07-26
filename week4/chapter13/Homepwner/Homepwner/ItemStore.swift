@@ -10,7 +10,7 @@ import UIKit
 
 class ItemStore {
     var allItems = [Item]()
-	
+    
     func createItem() -> Item {
         let newItem = Item(random: true)
         allItems.append(newItem)
@@ -25,10 +25,10 @@ class ItemStore {
     }
     
     func moveItemAtIndex(fromIndex: Int, toIndex: Int) {
-		guard fromIndex != toIndex else {
-			return
-		}
-		
+        guard fromIndex != toIndex else {
+            return
+        }
+        
         let movedItem = allItems[fromIndex]
         
         allItems.remove(at: fromIndex)
