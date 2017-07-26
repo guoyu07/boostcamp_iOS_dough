@@ -16,13 +16,13 @@ class ViewController: UIViewController {
     @IBOutlet var currentQuestionLabelCenterXConstraint: NSLayoutConstraint!
     @IBOutlet var nextQuestionLabelCenterXConstraint: NSLayoutConstraint!
     
-    let questions: [String] = ["From what is cognac made?",
+    private let questions: [String] = ["From what is cognac made?",
                                "What is 7+7?",
                                "What is the capital of Vermont?"]
-    let answers: [String] = ["Grapes",
+    private let answers: [String] = ["Grapes",
                              "14",
                              "Montpelier"]
-    var currentQuestionIndex: Int = 0
+    private var currentQuestionIndex: Int = 0
     
     @IBAction func showNextQuestion(sender: AnyObject) {
         currentQuestionIndex = (currentQuestionIndex + 1) % questions.count
