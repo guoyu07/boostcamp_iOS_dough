@@ -9,10 +9,10 @@
 import UIKit
 
 class RecordStore {
-	var allRecords = [Record]()
-	
-	func sortRecords(){
-		allRecords.sort(by: { $0.timeRecord < $1.timeRecord
-		})
-	}
+    var allRecords = [Record]()
+    
+    func sortRecords(){
+        allRecords.sort(by: { $0.timeRecord < $1.timeRecord
+        })
+    }
 }
