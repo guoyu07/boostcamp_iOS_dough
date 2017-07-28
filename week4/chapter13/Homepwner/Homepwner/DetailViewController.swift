@@ -20,7 +20,6 @@ class DetailViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    // MARK: 질문: Formatter는 상수로 쓰는게 좋을까? 아니면 함수로 만들어 쓰는게 좋을까?
     let numberFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
         formatter.numberStyle = .decimal
