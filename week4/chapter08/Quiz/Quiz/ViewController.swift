@@ -17,11 +17,11 @@ class ViewController: UIViewController {
     @IBOutlet var nextQuestionLabelCenterXConstraint: NSLayoutConstraint!
     
     private let questions: [String] = ["From what is cognac made?",
-                               "What is 7+7?",
-                               "What is the capital of Vermont?"]
+                                       "What is 7+7?",
+                                       "What is the capital of Vermont?"]
     private let answers: [String] = ["Grapes",
-                             "14",
-                             "Montpelier"]
+                                     "14",
+                                     "Montpelier"]
     private var currentQuestionIndex: Int = 0
     
     @IBAction func showNextQuestion(sender: AnyObject) {
@@ -61,17 +61,19 @@ class ViewController: UIViewController {
             delay: 0,
             usingSpringWithDamping: 0.5,
             initialSpringVelocity: 0.5,
-            options: [.curveLinear], animations: {
+            options: [.curveLinear],
+            animations: {
                 self.currentQuestionLabel.alpha = 0
                 self.nextQuestionLabel.alpha = 1
                 self.view.layoutIfNeeded()
-        },
+            },
             completion: { _ in
                 swap(&self.currentQuestionLabel, &self.nextQuestionLabel)
                 swap(&self.currentQuestionLabelCenterXConstraint,
                      &self.nextQuestionLabelCenterXConstraint)
                 self.updateOffScreenLabel()
-        })
+            }
+        )
     }
     
     func updateOffScreenLabel() {
