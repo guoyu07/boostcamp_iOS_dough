@@ -128,16 +128,4 @@ class ItemsViewController: UITableViewController {
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 65
     }
-    
-//    private func formatDollars(from value: Double) -> String {
-//        let currencyFormatter = NumberFormatter()
-//        currencyFormatter.numberStyle = .currency
-//        currencyFormatter.locale = Locale(identifier: "en_US")
-//        
-//        guard let formattedValue = currencyFormatter.string(from: NSNumber(value: value)) else {
-//            assertionFailure("Failed to format currency")
-//            return "N/A"
-//        }
-//        return formattedValue
-//    }
 }
