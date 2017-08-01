@@ -13,7 +13,8 @@ class ArticleDataSource: NSObject {
 }
 
 extension ArticleDataSource: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(_ collectionView: UICollectionView,
+                        numberOfItemsInSection section: Int) -> Int {
         return articles.count
     }
     
@@ -22,9 +23,6 @@ extension ArticleDataSource: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ArticleCollectionViewCell",
                                                       for: indexPath)
             as? ArticleCollectionViewCell ?? ArticleCollectionViewCell()
-        
-        let article = articles[indexPath.row]
-        cell.updateWithImage(image: article.thumbImage)
         
         return cell
     }

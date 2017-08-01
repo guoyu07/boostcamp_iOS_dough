@@ -22,7 +22,7 @@ class SignInViewController: UIViewController {
 
 extension SignInViewController: SignUpViewControllerDelegate {
     func alertAfterSignUp() {
-        let alertController = UIAlertController(title: "회원가입 완료", message: "",
+        let alertController = UIAlertController(title: "회원가입 완료", message: nil,
                                                 preferredStyle: .alert)
         let alertAction = UIAlertAction(title: "확인", style: .default, handler: nil)
         alertController.addAction(alertAction)

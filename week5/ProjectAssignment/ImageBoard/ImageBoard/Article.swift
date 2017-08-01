@@ -18,7 +18,8 @@ class Article {
     var thumbImage: UIImage?
     var image: UIImage?
     
-    init(id: String, thumbImageURL: URL, imageTitle: String, authorNickname: String, dateCreated: Date) {
+    init(id: String, thumbImageURL: URL, imageTitle: String,
+         authorNickname: String, dateCreated: Date) {
         self.id = id
         self.thumbImageURL = thumbImageURL
         self.imageTitle = imageTitle
@@ -29,6 +30,6 @@ class Article {
 
 extension Article: Equatable {}
 
-func == (lhs: Article, rhs: Article) -> Bool {
-    return lhs.id == rhs.id
+func == (leftHandSide: Article, rightHandSide: Article) -> Bool {
+    return leftHandSide.id == rightHandSide.id
 }

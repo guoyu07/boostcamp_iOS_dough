@@ -14,21 +14,20 @@ class ArticleCollectionViewCell: UICollectionViewCell {
     @IBOutlet var nicknameTextField: UILabel!
     @IBOutlet var dateTextField: UILabel!
     
-    func updateWithImage(image: UIImage?) {
+    let dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMM d, yyyy 'at' h:mm:ss a"
+        return formatter
+    }()
+    
+    func updateWithInfo(image: UIImage?, title: String, nickname: String, date: Date) {
         guard let imageToDisplay = image else {
             imageView.image = nil
             return
         }
         imageView.image = imageToDisplay
-    }
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        updateWithImage(image: nil)
-    }
-    
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        updateWithImage(image: nil)
+        titleTextLabel.text = title
+        nicknameTextField.text = nickname
+        dateTextField.text = dateFormatter.string(from: date)
     }
 }

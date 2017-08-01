@@ -9,9 +9,9 @@
 import UIKit
 
 enum alertType {
-    case emptyTextField
-//    case emailOverlapped
-    case passwordUnconformed
+    case unfilledField
+    case passwordCheck
+    case overlapedEmail
 }
 
 protocol SignUpViewControllerDelegate {
@@ -26,26 +26,27 @@ class SignUpViewController: UIViewController {
     
     var delegate: SignUpViewControllerDelegate?
     
+    let session: URLSession = {
+        let config = URLSessionConfiguration.default
+        return URLSession(configuration: config)
+    }()
+    
     @IBAction func submitSignUp(_ sender: UIButton) {
-        // 빈칸 확인
         guard
             let emailString = emailTextField.text, !emailString.isEmpty,
             let nicknameString = nicknameTextField.text, !nicknameString.isEmpty,
             let passwordString = passwordTextField.text, !passwordString.isEmpty,
             let checkString = passwordCheckTextField.text, !checkString.isEmpty else {
-                alert(for: .emptyTextField)
+                alert(for: .unfilledField)
                 return
         }
-    
-        // 이메일 중복 확인
         
-        // 암호 확인
         guard passwordTextField.text == passwordCheckTextField.text else {
-            alert(for: .passwordUnconformed)
+            alert(for: .passwordCheck)
             return
         }
         
-        // 회원정보 저장
+        // [작업 중] 제출, 이메일 중복체크
         
         self.navigationController?.popViewController(animated: true)
         self.delegate?.alertAfterSignUp()
@@ -54,14 +55,15 @@ class SignUpViewController: UIViewController {
     private func alert(for alertType: alertType) {
         let alertTitle: String
         switch alertType {
-        case .emptyTextField:
+        case .unfilledField:
             alertTitle = "모든 항목을 입력해주세요."
-//        case .emailOverlapped: break
-        case .passwordUnconformed:
+        case .passwordCheck:
             alertTitle = "암호와 암호확인이\n일치하지 않습니다."
+        case .overlapedEmail:
+            alertTitle = "알림"
         }
         
-        let alertController = UIAlertController(title: alertTitle, message: "",
+        let alertController = UIAlertController(title: alertTitle, message: nil,
                                                 preferredStyle: .alert)
         let alertAction = UIAlertAction(title: "확인", style: .default, handler: nil)
         alertController.addAction(alertAction)

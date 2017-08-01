@@ -9,9 +9,15 @@
 import UIKit
 
 class TableViewController: UIViewController {
+    @IBOutlet var tableView: UITableView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        presentSignInViewControllerWhenLaunched()
+    }
+    
+    private func presentSignInViewControllerWhenLaunched() {
         if let signInViewController = self.storyboard?.instantiateViewController(withIdentifier: "SignInViewController") {
             let navigationController = UINavigationController(rootViewController: signInViewController)
             self.present(navigationController, animated:false, completion: nil)

@@ -24,8 +24,7 @@ class ArticleStore {
     }()
     
     func fetchAllArticles(completion: @escaping (ArticlesResult) -> Void) {
-        guard let url = ImageBoardAPI.allArticlesURL() else {
-            assertionFailure("The url is nil.")
+        guard let url = ImageBoardAPI.imageBoardURL(for: Action.getAllArticles) else {
             return
         }
         var request = URLRequest(url: url)
@@ -56,13 +55,19 @@ class ArticleStore {
         }
         
         let articleURL = article.thumbImageURL
-        let request = URLRequest(url: articleURL)
+        var request = URLRequest(url: articleURL)
+        request.httpMethod = "GET"
+
         let task = session.dataTask(with: request) { (data, response, error) -> Void in
             let result = self.processThumbImageRequest(data: data, error: error)
             if case let .success(image) = result {
                 article.thumbImage = image
             }
             completion(result)
+            
+            if let httpURLResponse = response as? HTTPURLResponse {
+                print("Status code: \(httpURLResponse.statusCode)")
+            }
         }
         task.resume()
     }

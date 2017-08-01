@@ -8,12 +8,12 @@
 
 import Foundation
 
-enum SubPath: String {
-    case allArticles = "/"
-    case signingIn = "/login"
-    case signingUp = "/user"
-    case addingArticle = "/image"
-    case changingArticle = "/image/:article_id:"
+enum Action: String {
+    case getAllArticles = "/"
+    case signIn = "/login"
+    case signUp = "/user"
+    case addArticle = "/image"
+    case changeArticle = "/image/:article_id:"
 }
 
 enum ArticlesResult {
@@ -28,11 +28,12 @@ enum ImageBoardError: Error {
 struct ImageBoardAPI {
     private static let baseURLString = "https://ios-api.boostcamp.connect.or.kr"
     
-    static func allArticlesURL() -> URL? {
-        guard let url = URL(string: baseURLString + SubPath.allArticles.rawValue) else {
-            assertionFailure("The url is nil.")
+    static func imageBoardURL(for action: Action) -> URL? {
+        guard let url = URL(string: "\(baseURLString)\(action.rawValue)") else {
+            assertionFailure("Failed initializing URL from String")
             return nil
         }
+        print("Successfully created URL: \(url)")
         return url
     }
     
@@ -69,8 +70,9 @@ struct ImageBoardAPI {
             let timeStamp = json["created_at"] as? Int else {
                 return nil
         }
-        let dateCreated = Date(timeIntervalSince1970: TimeInterval(Double(timeStamp)))
-
+        let timeInterval = TimeInterval(Double(timeStamp))
+        let dateCreated = Date(timeIntervalSince1970: timeInterval)
+        
         return Article(id: id, thumbImageURL: thumbImageURL, imageTitle: imageTitle, authorNickname: authorNickname, dateCreated: dateCreated)
     }
 }
