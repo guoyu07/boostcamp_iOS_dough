@@ -8,10 +8,7 @@
 
 import UIKit
 
-class PhotosViewController:
-    UIViewController,
-    UICollectionViewDelegate,
-    UICollectionViewDelegateFlowLayout {
+class PhotosViewController: UIViewController {
     @IBOutlet var collectionView: UICollectionView!
     
     var photoStore = PhotoStore()
@@ -36,36 +33,6 @@ class PhotosViewController:
         }
     }
     
-    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        let photo = photoDataSource.photos[indexPath.row]
-        
-        photoStore.fetchImageForPhoto(photo: photo) { (result) -> Void in
-            OperationQueue.main.addOperation {
-                guard let photoIndex = self.photoDataSource.photos.index(of: photo) else {
-                    assertionFailure("The index of photos is nil.")
-                    return
-                }
-                let photoIndexPath = IndexPath(row: photoIndex, section: 0)
-                
-                if let cell = self.collectionView.cellForItem(at: photoIndexPath) as? PhotoCollectionViewCell {
-                    cell.updateWithImage(image: photo.image)
-                }
-            }
-        }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        var cellLength = 0.0
-        
-        if UIDevice.current.orientation.isPortrait{
-            cellLength = Double(collectionView.bounds.width) / 4
-        } else if UIDevice.current.orientation.isLandscape {
-            cellLength = Double(collectionView.bounds.width) / 8
-        }
-        
-        return CGSize(width: cellLength, height: cellLength)
-    }
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard segue.identifier == "ShowPhotoInfo" else{
             assertionFailure("The identifier for segue object is not 'ShowPhoto'.")
@@ -83,5 +50,39 @@ class PhotosViewController:
         
         destinationViewController.photo = photo
         destinationViewController.photoStore = photoStore
+    }
+}
+
+extension PhotosViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        let photo = photoDataSource.photos[indexPath.row]
+        
+        photoStore.fetchImageForPhoto(photo: photo) { (result) -> Void in
+            OperationQueue.main.addOperation {
+                guard let photoIndex = self.photoDataSource.photos.index(of: photo) else {
+                    assertionFailure("The index of photos is nil.")
+                    return
+                }
+                let photoIndexPath = IndexPath(row: photoIndex, section: 0)
+                
+                if let cell = self.collectionView.cellForItem(at: photoIndexPath) as? PhotoCollectionViewCell {
+                    cell.updateWithImage(image: photo.image)
+                }
+            }
+        }
+    }
+}
+
+extension PhotosViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        var cellLength = 0.0
+        
+        if UIDevice.current.orientation.isPortrait{
+            cellLength = Double(collectionView.bounds.width) / 4
+        } else if UIDevice.current.orientation.isLandscape {
+            cellLength = Double(collectionView.bounds.width) / 8
+        }
+        
+        return CGSize(width: cellLength, height: cellLength)
     }
 }
