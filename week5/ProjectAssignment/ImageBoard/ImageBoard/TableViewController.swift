@@ -12,9 +12,9 @@ class TableViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        if let signInViewController = self.storyboard?.instantiateViewController(withIdentifier: "SignInViewController") {
-//            let navigationController = UINavigationController(rootViewController: signInViewController)
-//            self.present(navigationController, animated:false, completion: nil)
-//        }
+        if let signInViewController = self.storyboard?.instantiateViewController(withIdentifier: "SignInViewController") {
+            let navigationController = UINavigationController(rootViewController: signInViewController)
+            self.present(navigationController, animated:false, completion: nil)
+        }
     }
 }

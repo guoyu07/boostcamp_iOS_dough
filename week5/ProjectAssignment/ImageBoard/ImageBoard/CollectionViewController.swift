@@ -8,7 +8,8 @@
 
 import UIKit
 
-class CollectionViewController: UIViewController {
+class CollectionViewController: UIViewController, UICollectionViewDelegate,
+    UICollectionViewDelegateFlowLayout {
     @IBOutlet var collectionView: UICollectionView!
     
     var articleStore = ArticleStore()
@@ -17,11 +18,6 @@ class CollectionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.dataSource = articleDataSource
-        
-        if let signInViewController = self.storyboard?.instantiateViewController(withIdentifier: "SignInViewController") {
-            let navigationController = UINavigationController(rootViewController: signInViewController)
-            self.present(navigationController, animated:false, completion: nil)
-        }
         
         articleStore.fetchAllArticles { (articlesResult) -> Void in
             OperationQueue.main.addOperation {
@@ -36,5 +32,35 @@ class CollectionViewController: UIViewController {
                 self.collectionView.reloadSections(IndexSet(integer: 0))
             }
         }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        let article = articleDataSource.articles[indexPath.row]
+        
+        articleStore.fetchThumbImageForArticle(article: article) { (result) -> Void in
+            OperationQueue.main.addOperation {
+                guard let articleIndex = self.articleDataSource.articles.index(of: article) else {
+                    assertionFailure("The index of article is nil.")
+                    return
+                }
+                let articleIndexPath = IndexPath(row: articleIndex, section: 0)
+                
+                if let cell = self.collectionView.cellForItem(at: articleIndexPath) as? ArticleCollectionViewCell {
+                    cell.updateWithImage(image: article.thumbImage)
+                }
+            }
+        }
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        var cellLength = 0.0
+        
+        if UIDevice.current.orientation.isPortrait{
+            cellLength = Double(collectionView.bounds.width) / 4
+        } else if UIDevice.current.orientation.isLandscape {
+            cellLength = Double(collectionView.bounds.width) / 8
+        }
+        
+        return CGSize(width: cellLength, height: cellLength)
     }
 }

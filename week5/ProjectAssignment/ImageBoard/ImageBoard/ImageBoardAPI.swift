@@ -28,15 +28,17 @@ enum ImageBoardError: Error {
 struct ImageBoardAPI {
     private static let baseURLString = "https://ios-api.boostcamp.connect.or.kr"
     
-    static func allArticlesURL() -> URL {
-        let url = URL(fileURLWithPath: baseURLString + SubPath.allArticles.rawValue)
+    static func allArticlesURL() -> URL? {
+        guard let url = URL(string: baseURLString + SubPath.allArticles.rawValue) else {
+            assertionFailure("The url is nil.")
+            return nil
+        }
         return url
     }
     
     static func articlesFromJSONData(data: Data) -> ArticlesResult {
         do {
             let jsonObject = try JSONSerialization.jsonObject(with: data, options: [])
-            
             guard let articlesArray = jsonObject as? [Any] else {
                     return .failure(ImageBoardError.invalidJSONData)
             }
@@ -61,7 +63,7 @@ struct ImageBoardAPI {
         guard
             let id = json["_id"] as? String,
             let thumbImageURLString = json["thumb_image_url"] as? String,
-            let thumbImageURL = URL(string: thumbImageURLString),
+            let thumbImageURL = URL(string: "\(baseURLString)\(thumbImageURLString)"),
             let imageTitle = json["image_title"] as? String,
             let authorNickname = json["author_nickname"] as? String,
             let timeStamp = json["created_at"] as? Int else {

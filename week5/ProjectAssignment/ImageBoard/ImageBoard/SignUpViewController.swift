@@ -36,21 +36,16 @@ class SignUpViewController: UIViewController {
                 alert(for: .emptyTextField)
                 return
         }
-        
+    
         // 이메일 중복 확인
-        
         
         // 암호 확인
         guard passwordTextField.text == passwordCheckTextField.text else {
             alert(for: .passwordUnconformed)
             return
         }
-            
         
         // 회원정보 저장
-        let newUser = User(email: emailString, nickname: nicknameString,
-                               password: passwordString)
-        dump(newUser)
         
         self.navigationController?.popViewController(animated: true)
         self.delegate?.alertAfterSignUp()

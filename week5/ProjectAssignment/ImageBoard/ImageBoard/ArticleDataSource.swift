@@ -8,9 +8,11 @@
 
 import UIKit
 
-class ArticleDataSource: NSObject, UICollectionViewDataSource {
+class ArticleDataSource: NSObject {
     var articles = [Article]()
-    
+}
+
+extension ArticleDataSource: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return articles.count
     }
@@ -19,6 +21,11 @@ class ArticleDataSource: NSObject, UICollectionViewDataSource {
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ArticleCollectionViewCell",
                                                       for: indexPath)
+            as? ArticleCollectionViewCell ?? ArticleCollectionViewCell()
+        
+        let article = articles[indexPath.row]
+        cell.updateWithImage(image: article.thumbImage)
+        
         return cell
     }
 }

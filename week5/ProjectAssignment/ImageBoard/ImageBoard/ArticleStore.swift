@@ -24,17 +24,19 @@ class ArticleStore {
     }()
     
     func fetchAllArticles(completion: @escaping (ArticlesResult) -> Void) {
-        let url = ImageBoardAPI.allArticlesURL()
-        let request = URLRequest(url: url)
+        guard let url = ImageBoardAPI.allArticlesURL() else {
+            assertionFailure("The url is nil.")
+            return
+        }
+        var request = URLRequest(url: url)
+        request.httpMethod = "GET"
+        
         let task = session.dataTask(with: request) { (data, response, error) -> Void in
             let result = self.processAllArticlesRequest(data: data, error: error)
             completion(result)
             
             if let httpURLResponse = response as? HTTPURLResponse {
-                print(httpURLResponse.statusCode)
-                httpURLResponse.allHeaderFields.forEach { headerField in
-                    print(headerField)
-                }
+                print("Status code: \(httpURLResponse.statusCode)")
             }
         }
         task.resume()

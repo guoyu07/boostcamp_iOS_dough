@@ -12,6 +12,7 @@
 		83D3691E1F304BEC009EE79B /* Article.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D3691D1F304BEC009EE79B /* Article.swift */; };
 		83D369201F304BF9009EE79B /* ArticleStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D3691F1F304BF9009EE79B /* ArticleStore.swift */; };
 		83D369241F30780B009EE79B /* ArticleDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D369231F30780B009EE79B /* ArticleDataSource.swift */; };
+		83D369261F309F8F009EE79B /* ArticleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D369251F309F8F009EE79B /* ArticleCollectionViewCell.swift */; };
 		83D65ED41F2F46DF00F4BCBB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 83D65ED31F2F46DF00F4BCBB /* AppDelegate.swift */; };
 		83D65ED91F2F46DF00F4BCBB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 83D65ED71F2F46DF00F4BCBB /* Main.storyboard */; };
 		83D65EDB1F2F46DF00F4BCBB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 83D65EDA1F2F46DF00F4BCBB /* Assets.xcassets */; };
@@ -28,6 +29,7 @@
 		83D3691D1F304BEC009EE79B /* Article.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Article.swift; sourceTree = "<group>"; };
 		83D3691F1F304BF9009EE79B /* ArticleStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleStore.swift; sourceTree = "<group>"; };
 		83D369231F30780B009EE79B /* ArticleDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleDataSource.swift; sourceTree = "<group>"; };
+		83D369251F309F8F009EE79B /* ArticleCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArticleCollectionViewCell.swift; sourceTree = "<group>"; };
 		83D65ED01F2F46DF00F4BCBB /* ImageBoard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImageBoard.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		83D65ED31F2F46DF00F4BCBB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		83D65ED81F2F46DF00F4BCBB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -51,6 +53,44 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		83D369291F30A67B009EE79B /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				83D65EE91F2F49DF00F4BCBB /* SignInViewController.swift */,
+				83D65EE71F2F479600F4BCBB /* SignUpViewController.swift */,
+				83D65EED1F2F912400F4BCBB /* TableViewController.swift */,
+				83D65EEF1F2F913000F4BCBB /* CollectionViewController.swift */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		83D3692B1F30A6E6009EE79B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				8347ACDE1F2FB47A00559BE4 /* User.swift */,
+				83D3691D1F304BEC009EE79B /* Article.swift */,
+				83D3691F1F304BF9009EE79B /* ArticleStore.swift */,
+				832A8BE31F30393A008ED6D7 /* ImageBoardAPI.swift */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		83D3692C1F30A8E5009EE79B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				83D369251F309F8F009EE79B /* ArticleCollectionViewCell.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		83D3692D1F30AC37009EE79B /* DataSources */ = {
+			isa = PBXGroup;
+			children = (
+				83D369231F30780B009EE79B /* ArticleDataSource.swift */,
+			);
+			name = DataSources;
+			sourceTree = "<group>";
+		};
 		83D65EC71F2F46DF00F4BCBB = {
 			isa = PBXGroup;
 			children = (
@@ -71,15 +111,10 @@
 			isa = PBXGroup;
 			children = (
 				83D65ED31F2F46DF00F4BCBB /* AppDelegate.swift */,
-				83D65EE91F2F49DF00F4BCBB /* SignInViewController.swift */,
-				83D65EE71F2F479600F4BCBB /* SignUpViewController.swift */,
-				83D65EED1F2F912400F4BCBB /* TableViewController.swift */,
-				83D65EEF1F2F913000F4BCBB /* CollectionViewController.swift */,
-				83D369231F30780B009EE79B /* ArticleDataSource.swift */,
-				832A8BE31F30393A008ED6D7 /* ImageBoardAPI.swift */,
-				83D3691D1F304BEC009EE79B /* Article.swift */,
-				83D3691F1F304BF9009EE79B /* ArticleStore.swift */,
-				8347ACDE1F2FB47A00559BE4 /* User.swift */,
+				83D369291F30A67B009EE79B /* ViewControllers */,
+				83D3692D1F30AC37009EE79B /* DataSources */,
+				83D3692C1F30A8E5009EE79B /* Views */,
+				83D3692B1F30A6E6009EE79B /* Models */,
 				83D65ED71F2F46DF00F4BCBB /* Main.storyboard */,
 				83D65EDA1F2F46DF00F4BCBB /* Assets.xcassets */,
 				83D65EDC1F2F46DF00F4BCBB /* LaunchScreen.storyboard */,
@@ -169,6 +204,7 @@
 				83D65EEA1F2F49DF00F4BCBB /* SignInViewController.swift in Sources */,
 				83D369201F304BF9009EE79B /* ArticleStore.swift in Sources */,
 				83D3691E1F304BEC009EE79B /* Article.swift in Sources */,
+				83D369261F309F8F009EE79B /* ArticleCollectionViewCell.swift in Sources */,
 				832A8BE41F30393A008ED6D7 /* ImageBoardAPI.swift in Sources */,
 				8347ACDF1F2FB47A00559BE4 /* User.swift in Sources */,
 				83D65EEE1F2F912400F4BCBB /* TableViewController.swift in Sources */,
