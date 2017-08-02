@@ -12,15 +12,13 @@ class ItemStore {
     var allItems = [Item]()
     
     let itemArchiveURL: URL = {
-        let documentsDirectories = FileManager.default.urls(for: .documentDirectory,
-                                                            in: .userDomainMask)
+        let documentsDirectories = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         let documentDirectory = documentsDirectories.first!
         return documentDirectory.appendingPathComponent("items.archive")
     }()
     
     init() {
-        guard let archivedItems = NSKeyedUnarchiver.unarchiveObject(withFile: itemArchiveURL.path)
-            as? [Item] else {
+        guard let archivedItems = NSKeyedUnarchiver.unarchiveObject(withFile: itemArchiveURL.path) as? [Item] else {
                 return
         }
         allItems += archivedItems

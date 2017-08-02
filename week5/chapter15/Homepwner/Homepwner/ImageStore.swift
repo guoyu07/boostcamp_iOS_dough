@@ -14,7 +14,10 @@ class ImageStore {
     func setImage(image: UIImage, key: String) {
         cache.setObject(image, forKey: key as AnyObject)
         
-        let imageURL = imageURLForKey(key: key)
+        guard let imageURL = imageURLForKey(key: key) else {
+            assertionFailure("The url is nil.")
+            return
+        }
         
         guard let data = UIImagePNGRepresentation(image) else {
             assertionFailure("Failed PNG representation.")
@@ -33,7 +36,11 @@ class ImageStore {
             return existingImage
         }
         
-        let imageURL = imageURLForKey(key: key)
+        guard let imageURL = imageURLForKey(key: key) else {
+            assertionFailure("The url is nil.")
+            return nil
+        }
+        
         guard let imageFromDisk = UIImage(contentsOfFile: imageURL.path) else {
             return nil
         }
@@ -45,7 +52,11 @@ class ImageStore {
     func deleteImageForKey(key: String) {
         cache.removeObject(forKey: key as AnyObject)
         
-        let imageURL = imageURLForKey(key: key)
+        guard let imageURL = imageURLForKey(key: key) else {
+            assertionFailure("The url is nil.")
+            return
+        }
+        
         do {
             try FileManager.default.removeItem(at: imageURL)
         } catch let deleteError {
@@ -53,10 +64,10 @@ class ImageStore {
         }
     }
     
-    func imageURLForKey(key: String) -> URL {
+    func imageURLForKey(key: String) -> URL? {
         let documentDirectories = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-        let documentDirectory = documentDirectories.first!
+        let documentDirectory = documentDirectories.first
         
-        return documentDirectory.appendingPathComponent(key)
+        return documentDirectory?.appendingPathComponent(key)
     }
 }

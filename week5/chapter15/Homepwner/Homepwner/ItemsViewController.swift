@@ -82,8 +82,7 @@ class ItemsViewController: UITableViewController {
         
         let title = "Delete \(item.name)?"
         let message = "Are you sure you want to delete this item?"
-        let alertController = UIAlertController(title: title, message: message,
-                                                preferredStyle: .actionSheet)
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .actionSheet)
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         alertController.addAction(cancelAction)
@@ -102,7 +101,8 @@ class ItemsViewController: UITableViewController {
         present(alertController, animated: true, completion: nil)
     }
     
-    override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath,
+    override func tableView(_ tableView: UITableView,
+                            moveRowAt sourceIndexPath: IndexPath,
                             to destinationIndexPath: IndexPath) {
         itemStore.moveItemAtIndex(fromIndex: sourceIndexPath.row, toIndex: destinationIndexPath.row)
     }
