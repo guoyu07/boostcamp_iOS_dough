@@ -54,7 +54,9 @@ class PhotosViewController: UIViewController {
 }
 
 extension PhotosViewController: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+    func collectionView(_ collectionView: UICollectionView,
+                        willDisplay cell: UICollectionViewCell,
+                        forItemAt indexPath: IndexPath) {
         let photo = photoDataSource.photos[indexPath.row]
         
         photoStore.fetchImageForPhoto(photo: photo) { (result) -> Void in
@@ -74,7 +76,9 @@ extension PhotosViewController: UICollectionViewDelegate {
 }
 
 extension PhotosViewController: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
         var cellLength = 0.0
         
         if UIDevice.current.orientation.isPortrait{

@@ -11,19 +11,20 @@ import UIKit
 class PhotoInfoViewController: UIViewController {
     @IBOutlet var imaageView: UIImageView!
     
-    var photo: Photo! {
+    var photo: Photo? {
         didSet {
-            guard photo != nil else {
-                assertionFailure("Photo is nil.")
-                return
-            }
-            navigationItem.title = photo.title
+            navigationItem.title = photo?.title
         }
     }
     var photoStore = PhotoStore()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        guard let photo = self.photo else {
+            assertionFailure("The photo is nil.")
+            return
+        }
         
         photoStore.fetchImageForPhoto(photo: photo) { (result) -> Void in
             switch result {

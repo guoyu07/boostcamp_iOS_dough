@@ -45,7 +45,7 @@ class PhotoStore {
     
     func processRecentPhotosRequest(data: Data?, error: Error?) -> PhotosResult {
         guard let jsonData = data else {
-            return .failure(error!) // MARK: error를 강제언랩핑하지 않는 방법은 없을까?
+            return .failure(error!)
         }
         return FlickrAPI.photosFromJSONData(data: jsonData)
     }
@@ -73,7 +73,7 @@ class PhotoStore {
             let imageData = data,
             let image = UIImage(data: imageData) else {
                 if data == nil {
-                    return .failure(error!) // MARK: error를 강제언랩핑하지 않는 방법은 없을까?
+                    return .failure(error!)
                 } else {
                     return .failure(PhotoError.imageCreationError)
                 }
