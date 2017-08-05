@@ -11,15 +11,24 @@ import UIKit
 class ItemStore {
     var allItems = [Item]()
     
-    let itemArchiveURL: URL = {
+    let itemArchiveURL: URL? = {
         let documentsDirectories = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
-        let documentDirectory = documentsDirectories.first!
+        guard let documentDirectory = documentsDirectories.first else {
+            assertionFailure("The first directory of documents directories is nil.")
+            return nil
+        }
+        
         return documentDirectory.appendingPathComponent("items.archive")
     }()
     
     init() {
-        guard let archivedItems = NSKeyedUnarchiver.unarchiveObject(withFile: itemArchiveURL.path) as? [Item] else {
-                return
+        guard let url = itemArchiveURL else {
+            assertionFailure("Failed initializing")
+            return
+        }
+        guard let archivedItems = NSKeyedUnarchiver.unarchiveObject(withFile: url.path) as? [Item] else {
+            assertionFailure("Failed initializing")
+            return
         }
         allItems += archivedItems
     }
@@ -49,7 +58,11 @@ class ItemStore {
     }
     
     func saveChanges() -> Bool {
-        print("Saving items to: \(itemArchiveURL.path)")
-        return NSKeyedArchiver.archiveRootObject(allItems, toFile: itemArchiveURL.path)
+        guard let url = itemArchiveURL else {
+            assertionFailure("Failed saving changes")
+            return false
+        }
+        print("Saving items to: \(url.path)")
+        return NSKeyedArchiver.archiveRootObject(allItems, toFile: url.path)
     }
 }
