@@ -75,7 +75,7 @@
 * AppDelegate
 * Error Handling
 * Equatable
-* 미니 프로젝트: 미니 게시판 만들기
+* 미니 프로젝트: 이미지 게시판 만들기
     * URLSession, HTTP Methods, HTTP Content Type
     * Tab Bar Controller
     * DateFormatter
