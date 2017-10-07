@@ -1,7 +1,7 @@
 # BoostCamp iOS | 5주 간의 학습 여정
 * 이 저장소는 BoostCamp iOS 과정 중 5주 동안의 제 학습 여정을 담고 있습니다.
 * 이어서 3주 동안 수행한 **iOS 애플리케이션 개발 프로젝트**
-  * [Project Oreo](https://github.com/oreyo/Project_Oreo)
+  * [`Oreo - 나를 위한 사진 일기장` on App Store](https://l.facebook.com/l.php?u=https%3A%2F%2Fitunes.apple.com%2Fkr%2Fapp%2Foreo-%25EB%2582%2598%25EB%25A5%25BC-%25EC%259C%2584%25ED%2595%259C-%25EC%2582%25AC%25EC%25A7%2584-%25EC%259D%25BC%25EA%25B8%25B0%25EC%259E%25A5%2Fid1289639634%3Fl%3Den%26mt%3D8&h=ATMz6iwxCg6Y6oyiw_brf36y1oYx9fjk8tQcAumi4LL4uCgXc0x_h-m366_gt_jm6JYDWq7jyj6VZxXZyyVCTBhcBrfZh5_zhtYl9oNpViWLQKXw7PSQN8PijWzizh78rVbuVRd1_JpoYzOXlWWbETRHQhYPvvFlukmWhhOMinv6696E1QgCFFjYv0v3fw_nxiYZaPewhAClNXBxbFAHIV2dntt--jgkKwYkX-hMGE79rswJMgcpBZROATNvrUBxoBfJJojKHYSQVbUSLFGRc9Pj0ggGvCJGooSWvLnbjfYaQTYtpdo)
 * 모둠원들과 함께 학습한 내용이 있는 모둠 `5인큐`의 저장소
   * [boostcamp_iOS_5InQueue](https://github.com/bluelocate/boostcamp_iOS_5InQueue)
 * BoostCamp에 대하여 더 알고 싶다면
